@@ -5,18 +5,19 @@ void Turn_Left (int distance);
 void Turn_Right (int distance);
 void Grab_Firefighter (int count);
 void Ready_Claw (int count2);
-int Open=380;
-int Close=1200;
+int Open=800;
+int Close=1500;
 int Up=1000;
-int Down=1300;
+int Down=1400;
+int AboutDown = 1200;
 int amount=0;
 int amount2=0;
 
 int main()
 {
     Ready_Claw(1);
-	Drive_Forward(60);
-	Grab_Firefighter(6);
+	Drive_Forward(59);
+	Grab_Firefighter(5);
 	return 0;
 }
 
@@ -47,7 +48,7 @@ void Drive_Backwards(int distance)
 void Turn_Left (int distance)
 {
     cmpc(1);
-    while(abs(gmpc(1))<9.4*distance)
+    while(abs(gmpc(1))<10.8*distance)
     {
         motor(0,-95.5);
         motor(1,99.5);
@@ -75,7 +76,7 @@ void Grab_Firefighter (int count)
     {
     	set_servo_position(0,Close);
         msleep(400);
-    	Drive_Backwards(5);
+    	Drive_Backwards(7);
     	Turn_Right(150);
     	set_servo_position(0,Open);
         msleep(200);
@@ -96,6 +97,12 @@ void Ready_Claw (int count2)
     enable_servos();
     while(amount2<count2)
     {
+        set_servo_position(1,700);
+        msleep(400);
+        set_servo_position(1,1000);
+        msleep(400);
+        set_servo_position(1,AboutDown);
+        msleep(400);
         set_servo_position(1,Down);
         msleep(400);
     	set_servo_position(0,Open);
@@ -108,7 +115,3 @@ void Ready_Claw (int count2)
     ao();
     amount2 = 0;
 }
-    
-
-
-
