@@ -1,0 +1,120 @@
+Functions: 
+Drive Forward
+Drive Backwards
+Turn Right
+Turn Left
+Grab Firefighter
+
+Variables:
+Claw Up
+Claw Down
+Claw Open
+Claw Close
+
+0-15 Seconds: Goes to firefighter pole, takes out two firefighters and places them.
+//Wait for light
+//Stop in 119 Seconds
+//Grab Firefighter x2
+15-30 Seconds: Takes out four firefighters, places them and moves forward.
+//Grab Firefighter x3
+//Close claws to grab the firefighter on the bottom
+//Turn right 110 degrees
+//Open claws to release firefighter
+//Raise claw 
+//Turn right 70 degrees
+//Lower Claw
+//Goes forward 10 inches
+30-45 Seconds: Turns towards the Water Reclamation Unit and Drive to it. Turns right toward the water poms and Proceeds to place them into the water Reclamation Unit.
+//Turns left 30 degrees
+//Drives forward 165 cm
+//Turns left 90 degrees
+//Opens claw
+//Drives forward 5 cm
+//Closes claw
+//Backs up 5 cm
+//Turns right 90 degrees
+//Raises claw
+//Drives forward 5cm
+//Opens Claw
+//Backs Up 5cm
+//Lowers Claw
+45-60 Seconds: Continues to place poms in the Water Reclamation Unit
+//Turns left 90 degrees
+//Opens claw
+//Drives forward 5 cm
+//Closes claw
+//Backs up 5 cm
+//Turns right 90 degrees
+//Raises claw
+//Drives forward 5cm
+//Opens Claw
+//Backs Up 5cm
+//Lowers Claw
+//Repeat Steps 1-11 2 Times
+60-75 Seconds: Acquires gas valve and places it in the vicinity of the Water Reclamation Unit
+//Turn Left 30 degrees
+//Drive forward 30 cm
+//Opens Claw
+//Drives Forward 4 cm
+//Closes Claw
+//Raises Claw
+//Backs Up 20 cm
+//Lowers Claw
+//Releases Claw
+//Backs Up 10 cm
+//Turn Left 35 degrees
+75-90 Seconds: Drive toward the injured Flood Zone people. Pulls them out of the Flood Zone.
+//Move forward 43 cm
+//Turn right 45 degrees
+//Open claw 
+//Drive forward 4 cm
+//Close Claw
+//Back up
+//Turn 180 degrees left
+//Open claw
+//Raise claw
+//Turn right 90 degrees
+//Drive forward 30cm
+//Turn right 90 degrees
+//Open claw 
+//Drive forward 4 cm
+//Close Claw
+//Back up
+//Turn 180 degrees left
+//Open claw
+//Raise claw
+//Turn right 90 degrees
+//Drive forward 30cm
+90-105 Seconds: Continues to remove injured citizens from the flood zone. 
+//Turn right 90 degrees
+//Open claw 
+//Drive forward 4 cm
+//Close Claw
+//Back up
+//Turn 180 degrees left
+//Open claw
+//Raise claw
+//Turn right 90 degrees
+//Drive forward 30cm
+//Repeat steps 1-10
+105-120 Seconds: Drives toward the Disaster Relief Zone
+//Turn right 120 degrees
+//Drives Forward 1m
+//Turns right 60 degrees
+//Drives Forward 20 cm
+
+Function Definitions:
+
+Drive Forward
+Motors Forward for an evaluated distance
+Drive Backward
+Motors Backwards for an evaluated distance
+Turn Right
+Left motor half power for an evaluated time
+Turn Left
+Right Motor half power for an evaluated time
+Grab Firefighter
+Claw opens and closes, Lego Bot turns 90 degrees and claw opens again.
+
+
+
