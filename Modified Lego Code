@@ -1,0 +1,124 @@
+#include <kipr/botball.h>
+void Drive_Forward (int distance);
+void Drive_Backwards (int distance);
+void Turn_Left (int distance);
+void Turn_Right (int distance);
+void Grab_Firefighter (int count);
+void Ready_Claw (int count2);
+void Grab_Firefighter_Last(int count3);
+int Open=800;
+int Close=1500;
+int Up=1000;
+int Down=1400;
+int AboutDown=1200;
+int amount=0;
+int amount2=0;
+int amount3=0;
+int main()
+{
+    Ready_Claw(1);
+    Drive_Forward(59);
+    Grab_Firefighter(4);
+    Grab_Firefighter_Last(1);
+    return 0;
+}
+void Drive_Forward(int distance)
+{
+    cmpc(0);
+    while(abs(gmpc(0))<100*distance)
+    {
+        motor(0,96.5);
+        motor(1,97.5);
+        msleep(10);
+    }
+	ao();
+}
+void Drive_Backwards(int distance)
+{
+    cmpc(0);
+    while(abs(gmpc(0))<100*distance)
+    {
+        motor(0,-96.5);
+        motor(1,-97.5);
+        msleep(10);
+    }
+	ao();
+}
+void Turn_Left (int distance)
+{
+    cmpc(1);
+    while(abs(gmpc(1))<10.8*distance)
+    {
+        motor(0,-96.5);
+        motor(1,97.5);
+        msleep(10);
+    }
+    ao();
+}
+void Turn_Right (int distance)
+{
+    cmpc(0);
+    while(abs(gmpc(0))<8.5*distance)
+    {
+        motor(0,96.5);
+        motor(1,-97.5);
+        msleep(10);
+    }
+    ao();
+}
+void Grab_Firefighter (int count)
+{
+    enable_servos();
+    while(amount<count)
+    {
+    	set_servo_position(0,Close);
+        msleep(400);
+    	Drive_Backwards(7);
+    	Turn_Right(150);
+    	set_servo_position(0,Open);
+        msleep(200);
+	set_servo_position(1,Up);
+        msleep(200);
+    	Turn_Left(150);
+    	set_servo_position(1,Down);
+        Drive_Forward(4);
+	amount = amount+1;
+    }
+    disable_servos();
+    ao();
+    int amount = 0;
+}
+void Grab_Firefighter_Last(int count3)
+{
+	enable_servos();
+	while(amount3<count3)
+	{
+		set_servo_position(0,Close);
+        	msleep(400);
+    		Drive_Backwards(7);
+    		Turn_Right(150);
+    		set_servo_position(0,Open);
+        	msleep(200);
+		set_servo_position(1,Up);
+        	msleep(200);
+		amount3 = amount3+1;
+	}
+	disable_servos();
+	ao();
+	amount3=0;
+}
+void Ready_Claw (int count2)
+{
+    enable_servos();
+    while(amount2<count2)
+    {
+        set_servo_position(1,Down);
+        msleep(400);
+    	set_servo_position(0,Open);
+	msleep(400);
+	amount2=amount2+1;
+    }
+    disable_servos();
+    ao();
+    amount2 = 0;
+}
