@@ -6,6 +6,8 @@ void Turn_Right (int distance);
 void Grab_Firefighter (int count);
 void Ready_Claw (int count2);
 void Grab_Firefighter_Last(int count3);
+void Find_Line (int line);
+//void Grab_Water (int count8); 
 int Open=800;
 int Close=1500;
 int Up=1000;
@@ -17,9 +19,14 @@ int amount3=0;
 int main()
 {
     Ready_Claw(1);
-    Drive_Forward(59);
-    Grab_Firefighter(4);
+    Find_Line(1);
+    Drive_Forward(62);
+    Grab_Firefighter(5);
     Grab_Firefighter_Last(1);
+    Turn_Right(130);
+    Drive_Forward(15);
+    Turn_Left(90);
+    Drive_Forward(150);    
     return 0;
 }
 void Drive_Forward(int distance)
@@ -28,7 +35,7 @@ void Drive_Forward(int distance)
     while(abs(gmpc(0))<100*distance)
     {
         motor(0,96.5);
-        motor(1,97.5);
+        motor(1,96.5);
         msleep(10);
     }
 	ao();
@@ -99,7 +106,7 @@ void Grab_Firefighter_Last(int count3)
     		Turn_Right(150);
     		set_servo_position(0,Open);
         	msleep(200);
-		set_servo_position(1,Up);
+			set_servo_position(1,Up);
         	msleep(200);
 		amount3 = amount3+1;
 	}
@@ -122,3 +129,19 @@ void Ready_Claw (int count2)
     ao();
     amount2 = 0;
 }
+void Find_Line(int line)
+{
+    while(analog(1)<3800)
+    {
+        motor(0,96.5);
+        motor(1,96.5);
+        msleep(10);
+    }
+}
+    
+    
+    
+    
+    
+    
+    
