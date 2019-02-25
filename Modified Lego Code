@@ -18,11 +18,11 @@ int amount2=0;
 int amount3=0;
 int main()
 {
-    Ready_Claw(1);
-    Find_Line(1);
-    Drive_Forward(62);
-    Grab_Firefighter(5);
-    Grab_Firefighter_Last(1);
+    //Ready_Claw(1);
+    //Find_Line(1);
+    //Drive_Forward(62);
+    //Grab_Firefighter(5);
+    //Grab_Firefighter_Last(1);
     Turn_Right(130);
     Drive_Forward(15);
     Turn_Left(90);
