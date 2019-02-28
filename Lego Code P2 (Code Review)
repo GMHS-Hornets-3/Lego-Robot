@@ -23,14 +23,16 @@ int amount3=0;
 int amount4=0;
 int main()
 {
+    set_servo_position(0,Open);
     Move_Servos(550, 1440);
     Find_Line(1);
-    Drive_Forward(61);
+    Drive_Forward(84);
     Grab_Firefighter(5);
     Grab_Firefighter_Last(1);
     Find_Line3(1);
     Follow_Line(1);
-    Turn_Left(90);
+    Turn_Left(150);
+    Drive_Forward(70);
     Find_Line2(1);
     Turn_Left(60);
     Find_Line2(2);
@@ -40,7 +42,7 @@ int main()
 void Drive_Forward(int distance)
 {
     cmpc(0);
-    while(abs(gmpc(0))<100*distance)
+    while(abs(gmpc(0))<75*distance)
     {
         motor(0,96.5);
         motor(1,96.5);
@@ -51,7 +53,7 @@ void Drive_Forward(int distance)
 void Drive_Backwards(int distance)
 {
     cmpc(0);
-    while(abs(gmpc(0))<100*distance)
+    while(abs(gmpc(0))<85*distance)
     {
         motor(0,-45.5);
         motor(1,-45.5);
@@ -62,7 +64,7 @@ void Drive_Backwards(int distance)
 void Turn_Left (int distance)
 {
     cmpc(1);
-    while(abs(gmpc(1))<11.1*distance)
+    while(abs(gmpc(1))<6.6*distance)
     {
         motor(0,-96.5);
         motor(1,96.5);
@@ -73,7 +75,7 @@ void Turn_Left (int distance)
 void Turn_Right (int distance)
 {
     cmpc(0);
-    while(abs(gmpc(0))<8.9*distance)
+    while(abs(gmpc(0))<6.6*distance)
     {
         motor(0,96.5);
         motor(1,-96.5);
@@ -94,9 +96,9 @@ void Grab_Firefighter (int count)
         msleep(200);
         set_servo_position(1,Up);
         msleep(200);
-        Turn_Left(125);
+        Turn_Left(167);
         set_servo_position(1,Down);
-        Drive_Forward(4.7);
+        Drive_Forward(4.5);
         amount = amount+1;
     }
     disable_servos();
@@ -224,3 +226,10 @@ void Follow_Line(int line4)
 	}
 	ao();
 }
+
+
+
+
+
+
+
