@@ -34,7 +34,6 @@ int main()
     Grab_Firefighter(4);
     Grab_Firefighter_Last(1);
     Find_Line3(1);
-    Turn_Right(30);
     Drive_Forward(20);
     Turn_Left(90);
     Drive_Forward(80);
@@ -71,22 +70,24 @@ void Turn_Left (int distance)
     cmpc(1);
     while(abs(gmpc(1))<11.1*distance)
     {
-        motor(0,-96.5);
-        motor(1,96.5);
+        motor(0,-45.5);
+        motor(1,45.5);
         msleep(10);
     }
     ao();
+    msleep(200);
 }
 void Turn_Right (int distance)
 {
     cmpc(0);
     while(abs(gmpc(0))<8.9*distance)
     {
-        motor(0,96.5);
-        motor(1,-96.5);
+        motor(0,45.5);
+        motor(1,-45.5);
         msleep(10);
     }
     ao();
+    msleep(200);
 }
 void Grab_Firefighter (int count)
 {
@@ -101,7 +102,7 @@ void Grab_Firefighter (int count)
         msleep(200);
         set_servo_position(1,Up);
         msleep(200);
-        Turn_Left(130);
+        Turn_Left(120);
         set_servo_position(1,Down);
         Drive_Forward(3.3);
         amount = amount+1;
@@ -244,7 +245,7 @@ void Grab_FireTruck(int truck)
         msleep(200);
         set_servo_position(1, Up);
         msleep(200);
-        Turn_Left(80);
+        Turn_Left(70);
         set_servo_position(1, Down);
         msleep(200);
         amount5=amount5+1;
