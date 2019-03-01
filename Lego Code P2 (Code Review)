@@ -23,6 +23,8 @@ int amount3=0;
 int amount4=0;
 int main()
 {
+    wait_for_light(3);
+    set_servo_position(0,Open);
     Move_Servos(550, 1440);
     Find_Line(1);
     Drive_Forward(61);
