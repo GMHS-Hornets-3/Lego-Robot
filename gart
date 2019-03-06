@@ -32,21 +32,24 @@ int main()
     Find_Line(1);
     Drive_Forward(50);
     Grab_FireTruck(1);
-    Drive_Forward(13);
+    Drive_Forward(12.5);
     Grab_Firefighter(5);
     Grab_Firefighter_Last(1);
-    Turn_Right(180);
+    Turn_Right(130);
     Move_Servos_Down(Up, Down);
-    Drive_Forward(6);
+    Drive_Forward(2);
     set_servo_position(0,Close);
+    msleep(100);
     Move_Servos_Up(Down, Up);
+    Turn_Left(20);
     Drive_Forward(10);
     enable_servos();
     set_servo_position(0,Open);
-    Turn_Left(90);
+    Turn_Left(80);
     Drive_Forward(80);
     Find_Line2(1);
     Turn_Left(60);
+    Drive_Forward(20);
     Find_Line2(2);
     Grab_Water(4);
     return 0;
@@ -106,13 +109,15 @@ void Grab_Firefighter (int count)
         set_servo_position(0,Close);
         msleep(400);
         Drive_Backwards(8.5);
-        Turn_Right(120);
+        Turn_Right(100);
+        Move_Servos_Up(Down,Up);
+        enable_servos();
+        Turn_Right(100);
         set_servo_position(0,Open);
         msleep(200);
-        Move_Servos_Up(Down, Up);
-        msleep(200);
+        Turn_Left(100);
+        Move_Servos_Down(Up, Down),
         Find_Line3(0);
-        Move_Servos_Down(Up, Down);
         Drive_Forward(4);
         amount = amount+1;
     }
@@ -128,7 +133,7 @@ void Grab_Firefighter_Last(int count3)
         set_servo_position(0,Close);
         msleep(400);
         Drive_Backwards(7);
-        Turn_Right(150);
+        Turn_Right(200);
         set_servo_position(0,Open);
         msleep(200);
         Move_Servos_Up(Down, Up);
@@ -212,6 +217,7 @@ void Move_Servos_Down(int start, int finish)
     }
     ao();
     disable_servos();
+    msleep(100);
 }
 void Find_Line3(int sleep)
 {	
@@ -292,6 +298,7 @@ void Move_Servos_Up(int start2, int finish2)
     }
     ao();
     disable_servos();
+    msleep(100);
 }
     
     
