@@ -27,13 +27,17 @@ int amount4=0;
 int amount5=0;
 int main()
 {
+    shut_down_in(119);
+    Find_Line2(1);
+    Drive_Backwards(.75);
+    Turn_Left(85);
     set_servo_position(0,Open);
     Move_Servos_Down(550, 1440);
     msleep(1000);
     Find_Line(1);
     Drive_Forward(51);
     Grab_FireTruck(1);
-    Drive_Forward(12.5);
+    Drive_Forward(13.5);
     Grab_Firefighter(4);
     Grab_Firefighter_Last(1);
     Turn_Right(137);
@@ -56,11 +60,10 @@ int main()
     Move_Servos_Up(Down,Up);
     Drive_Forward(80);
     Find_Line2(0);
-    Turn_Left(60);
-    Drive_Forward(20);
-    Find_Line2(0);
-    Find_Line4(0);
-    Drive_Forward(20);
+    Turn_Left(90);
+    Find_Line2(200);
+    Turn_Right(90);
+    Drive_Forward(30);
     Grab_Water(4);
     ao();
     return 0;
@@ -124,7 +127,7 @@ void Grab_Firefighter (int count)
         Move_Servos_Up(Down,Up);
         msleep(400);
         enable_servos();
-        Turn_Right(160);
+        Turn_Right(140);
         Move_Servos_Down(Up, Down);
         msleep(500);
         enable_servos();
@@ -134,8 +137,8 @@ void Grab_Firefighter (int count)
 		msleep(500);
         Turn_Left(135);
         Move_Servos_Down(Up, Down),
-        Find_Line3(100);
-        Drive_Forward(3);
+        Find_Line3(200);
+        Drive_Forward(6);
         amount = amount+1;
     }
     disable_servos();
@@ -182,7 +185,7 @@ void Find_Line(int line)
     {
         motor(0,96.5);
         motor(1,96.5);
-        msleep(10);
+        msleep(3);
     }
     ao();
 }
@@ -281,7 +284,7 @@ void Grab_FireTruck(int truck)
         msleep(200);
         Move_Servos_Up(Down,Up);
         msleep(200);
-        Turn_Left(169);
+        Turn_Left(165);
         Move_Servos_Down(Up, Down);
         msleep(200);
         amount5=amount5+1;
@@ -294,12 +297,12 @@ void Find_Line4(int sleep2)
 {
     while(analog(1)<3800)
     {
-        motor(0,-45.5);
-        motor(1,45.5);
+        motor(0,45.5);
+        motor(1,-45.5);
         msleep(3);
     }
-    motor(0,-45.5);
-    motor(1,45.5);
+    motor(0,45.5);
+    motor(1,-45.5);
     msleep(sleep2);
     ao();
 }
