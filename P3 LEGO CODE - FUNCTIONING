@@ -2,12 +2,14 @@
 void Drive_Forward (int distance);
 void Drive_Backwards (int distance);
 void Turn_Left (int distance);
+void Turn_Left_Kind_Of(int degrees);
 void Turn_Right (int distance);
 void Grab_Firefighter (int count);
 void Ready_Claw (int count2);
 void Grab_Firefighter_Last(int count3);
 void Find_Line (int line);
 void Grab_Water (int count4); 
+void Grab_Citizens (int count);
 void Find_Line2 (int sleep3);
 void Move_Servos_Down(int start, int finish);
 void Move_Servos_Up(int start2, int finish2);
@@ -15,9 +17,11 @@ void Find_Line3(int sleep);
 void Find_Line4(int line4);
 void Follow_Line(int line4);
 void Grab_FireTruck(int truck);
+void Grab_Citizens (int amount7);
 int Open=620;
 int Close=1450;
-int Little_Close=1250;
+int Little_Open=1000;
+int Little_Close=1350;
 int Up=1000;
 int Down=1440;
 int AboutDown=1200;
@@ -26,10 +30,11 @@ int amount2=0;
 int amount3=0;
 int amount4=0;
 int amount5=0;
+int count7=0;
 int main()
 {
     enable_servos();
-    Find_Line2(1);
+    /*Find_Line2(1);
     Drive_Backwards(.75);
     Turn_Left(91);
     set_servo_position(0,Open);
@@ -42,35 +47,43 @@ int main()
     Grab_Firefighter(4);
     Grab_Firefighter_Last(1);
     set_servo_position(0,Open);
-    Turn_Right(110);
+    Turn_Right(120);
     Move_Servos_Down(Up, Down);
-    Drive_Forward(1.2);
+    Drive_Forward(2);
+    msleep(100);
     set_servo_position(0,Little_Close);
     msleep(100);
     Move_Servos_Up(Down, Up);
     Turn_Left(15);
     Drive_Forward(13);
     set_servo_position(0,Open);
-    Turn_Left(95);
+    Turn_Left(104);
     set_servo_position(0,Close);
     Move_Servos_Down(Up,Down);
     Drive_Forward(20);
     Turn_Left(40);
     Turn_Right(40);
     Move_Servos_Up(Down,Up);
+    Drive_Forward(90);*/
     Find_Line2(0);
+    Turn_Left_Kind_Of(86);
+    Drive_Forward(40);
+    Find_Line2(2);
+    Turn_Right(98);
+    Drive_Forward(15);
     Turn_Left(89);
-    Drive_Forward(30);
-    Find_Line2(0);
-    Turn_Left(98);
-    Drive_Forward(15);
-    Turn_Right(98);
-    Drive_Forward(15);
-    Grab_Water(100);
-    Drive_Backwards(15);
-    Turn_Right(98);
-    Drive_Forward(25);
-    ao();
+    Move_Servos_Down(Up,Down);
+    Drive_Forward(5);
+    Grab_Citizens(1);
+    Turn_Right(180);
+    set_servo_position(0,Open);
+    Move_Servos_Up(Down,Up);
+    Turn_Right(90);
+    Drive_Forward(20);
+    Turn_Right(90);
+    Move_Servos_Down(Up,Down);
+    Grab_Citizens(1);
+
     return 0;
 }
 void Drive_Forward(int distance)
@@ -127,7 +140,7 @@ void Grab_Firefighter (int count)
         enable_servos();
         set_servo_position(0,Close);
         msleep(100);
-        Drive_Backwards(8.5);
+        Drive_Backwards(7.5);
         Turn_Right(40);
         Move_Servos_Up(Down,Up);
         msleep(100);
@@ -139,7 +152,7 @@ void Grab_Firefighter (int count)
         set_servo_position(0,Open);
         msleep(100);
         Move_Servos_Up(Down, Up);
-		msleep(100);
+        msleep(100);
         Turn_Left(115);
         Move_Servos_Down(Up, Down),
         Find_Line3(100);
@@ -198,7 +211,7 @@ void Find_Line(int line)
 void Grab_Water(int sleep5)
 {
     enable_servos();
-	set_servo_position(0,Open);
+    set_servo_position(0,Open);
     msleep(sleep5);
     Move_Servos_Down(Up,Down);
     msleep(sleep5);
@@ -209,11 +222,12 @@ void Grab_Water(int sleep5)
 }
 void Find_Line2(int sleep3)
 {
-    while(analog(1)<2000)
+    while(analog(1)<1500)
     {
         motor(0,96.5);
         motor(1,96.5);
-        msleep(3);
+        msleep(1);
+        printf("Sensor Reads %d\n", analog(1));
     }
     motor(0,96.5);
     motor(1,96.5);
@@ -259,7 +273,7 @@ void Grab_FireTruck(int truck)
         msleep(200);
         Move_Servos_Up(Down,Up);
         msleep(200);
-        Find_Line3(125);
+        Find_Line3(75);
         Move_Servos_Down(Up, Down);
         msleep(200);
         amount5=amount5+1;
@@ -294,3 +308,52 @@ void Move_Servos_Up(int start2, int finish2)
     ao();
     msleep(100);
 }
+void Turn_Left_Kind_Of(int degrees)
+{
+    cmpc(1);
+    while(gmpc(1)<degrees*22)
+    {
+        motor(0,0);
+        motor(1,100);
+        msleep(10);
+    }
+    ao();
+}
+void Grab_Citizens (int amount7)
+{
+    while(amount7>count7)
+    {
+        enable_servos();
+        set_servo_position(0,Little_Open);
+        msleep(100);
+        Drive_Forward(6);
+        msleep(100);
+        set_servo_position(0,Close);
+        msleep(100);
+        Drive_Backwards(12);
+        count7=count7+1;
+    }
+    disable_servos();
+    ao();
+    count7=0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
